@@ -37,7 +37,7 @@ program main
             x = s + (e - s)/(length - 1)*(j - 1)
             do i=1, length
                 y = s + (e - s)/(length - 1)*(i - 1)
-                m(i, j) = E1_cf(cmplx(x, y, kind(0d0)), 1d-12)
+                m(i, j) = E1_cf(cmplx(x, y, kind(0d0)), 1d-16)
             end do
         end do
 
