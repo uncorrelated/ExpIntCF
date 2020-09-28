@@ -1,6 +1,5 @@
 " ported to Smalltalk by @sumim "
 " http://ws.stfx.eu/C53MJMOP8D5U "
-" s/1e-12/1e-16/g by @uncorrelated "
 " workplace/playgroudに以下をコピペして動作を確認 "
 
 | E1cf2 E1cf MakeMatrix ms length m |
@@ -41,7 +40,7 @@ MakeMatrix := [:s :e :len |
           | x y |
           x := s + ((e - s) / (len - 1) * (i - 1)).
           y := s + ((e - s) / (len - 1) * (j - 1)).
-          E1cf value: x + y i value: 1e-16
+          E1cf value: x + y i value: 1e-12
      ]
 ].
 
@@ -53,7 +52,7 @@ ms := [m := MakeMatrix value: 0.1 value: 5 value: length] timeToRun asMilliSecon
 Transcript cr; show: 'elapsed time: ', (ms / 1.0e3) printString, ' seconds'.
 
 "save the matrix."
-StandardFileStream forceNewFileNamed:  'e1_cf.1e-16.st.txt' do: [:stream |
+StandardFileStream forceNewFileNamed:  'e1_cf.st.txt' do: [:stream |
      1 to: length do: [:j |
           stream cr.
           1 to: length do: [:i |

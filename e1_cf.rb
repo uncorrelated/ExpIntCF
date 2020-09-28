@@ -1,7 +1,6 @@
 #
 # ported to Ruby by @sumim
 # https://gist.github.com/sumim/8a80d57a901552b1d2bc36976d215e26
-# s/1e-12/1e-16/g by @uncorrelated
 #
 require 'matrix'
 
@@ -14,7 +13,7 @@ def _e1_cf(z, n)
   Math::E ** -z / (z + 1 / cf)
 end
 
-def e1_cf(z, reltol=1e-16)
+def e1_cf(z, reltol=1e-12)
   (1..1000).each{ |n|
     s = _e1_cf(z, n)
     d = _e1_cf(z, 2 * n)
@@ -39,7 +38,7 @@ m = make_matrix(0.1, 5, length)
 print "elapsed time: #{Time.now - start} seconds"
 
 # save the matrix.
-File.open("e1_cf.1e-16.rb.txt", "w"){ |stream|
+File.open("e1_cf.rb.txt", "w"){ |stream|
   length.times{ |j|
     length.times{ |i|
       stream.printf("%.6f+%.6f\t", m[i, j].real, m[i, j].imaginary)

@@ -31,7 +31,7 @@ double _Complex *MakeMatrix(double s, double e, int length){
 		double x = s + (e - s)/(length - 1)*j;
 		for(int i=0; i<length; i++){
 			double y = s + (e - s)/(length - 1)*i;
-			m[length*j + i] = E1_cf(x + y * _Complex_I, 1e-16);	
+			m[length*j + i] = E1_cf(x + y * _Complex_I, 1e-12);	
 		} 
 	} 
 	return m;

@@ -10,7 +10,7 @@ global c
     return exp(-z) / (z + inv(cf))
 end
 
-function E₁_cf(z::Number, reltol=1e-16)
+function E₁_cf(z::Number, reltol=1e-12)
     for n = 1:1000
         s = E₁_cf(z, n)
         d = E₁_cf(z, 2n)
