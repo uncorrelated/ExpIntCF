@@ -3,7 +3,6 @@ program main
     integer::length = 100, i, j
     real :: t1, t2
     complex(kind(0d0)), allocatable, dimension(:, :) :: m
-    CHARACTER(LEN=32) FMT
 
     call cpu_time( t1 )
 
@@ -13,6 +12,7 @@ program main
     print '("cpu time: ",f8.6," seconds.")', t2-t1
 
     open(1, file="e1_cf.f90.txt")
+
     do j=1, length
         do i=1, length
             write(1, '(f9.7,"+",f9.7,"im ")', advance='no') real(m(i,j)), aimag(m(i,j))
@@ -37,7 +37,7 @@ program main
             x = s + (e - s)/(length - 1)*(j - 1)
             do i=1, length
                 y = s + (e - s)/(length - 1)*(i - 1)
-                m(i, j) = E1_cf(cmplx(x, y, kind(0d0)), 1d-16)
+                m(i, j) = E1_cf(cmplx(x, y, kind(0d0)), 1d-12)
             end do
         end do
 
